@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Document</title>
+</head>
+<body>
+   <p>Study Sessions</p> 
+    <table>
+            <thead>
+                <tr>
+                    <th>Study Session ID</th>
+                    <th>Time Started</th>
+                    <th>Time Ended</th>
+                    <th>Study Tag</th>
+                    <th>Pomodoro's Completed:</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                <tr>
+                    <td>{{ row[0] }}</td>
+                    <td>{{ row[1] }}</td>
+                    <td>{{ row[2] }}</td>
+                    <td>{{ row[3] }}</td>
+                    <td>{{ row[4] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <form method="get" action="{{ url_for('timer') }}">
+		    <button type="submit">Go to timer Page</button>
+	    </form>
+</body>
+<script src="{{url_for('static', filename='js/index.js')}}"></script>
+</html>
