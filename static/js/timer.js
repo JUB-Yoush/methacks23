@@ -4,7 +4,7 @@ const tagSelect = document.getElementById('tags');
 const startButton = document.querySelector('.start-button');
 const durationInput = document.getElementById('duration');
 
-let timeLeft = 5; // 50 minutes in seconds
+let timeLeft = 1000 * 60 * 10; // 50 minutes in seconds
 let countdown;
 let selectedTag = tagSelect.value;
 let onBreak = false;

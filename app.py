@@ -16,8 +16,8 @@ def timer():
 
 @app.route('/start_timer', methods=['POST'])
 def start_timer():
-    print('hahahah')
-    pomodoro.start_timer()
+    #START ARDUINO 
+    pass
     
 @app.route('/')
 def home():
@@ -25,10 +25,12 @@ def home():
     cur = conn.cursor()
     #cur.execute('SELECT * FROM tablename')
 
-    start_date = datetime.datetime.now().strftime("%y-%m-%d %H:%M")
-    end_date = datetime.datetime.now().strftime("%y-%m-%d %H:%M")
+    start_date = datetime.datetime(2023, 5, 7, 14, 30, 0) 
+    end_date = datetime.datetime(2023, 5, 7, 17, 30, 0) 
+    start_date = start_date.strftime("%y-%m-%d %H:%M")
+    end_date = end_date.strftime("%y-%m-%d %H:%M")
     tag = "math"
-    num_sessions = 1
+    num_sessions = 3
 
     # Define the SQL query
     query = """
@@ -37,6 +39,23 @@ def home():
     """
     # Execute the query
     cur.execute(query, (start_date, end_date, tag, num_sessions))
+
+    start_date = datetime.datetime(2023, 5, 8, 10, 30, 0) 
+    end_date = datetime.datetime(2023, 5, 8, 15, 30, 0) 
+    start_date = start_date.strftime("%y-%m-%d %h:%m")
+    end_date = end_date.strftime("%y-%m-%d %H:%M")
+    tag = "history"
+    num_sessions = 5
+
+    cur.execute(query, (start_date, end_date, tag, num_sessions))
+
+    start_date = datetime.datetime(2023, 5, 8, 12, 30, 0) 
+    end_date = datetime.datetime(2023, 5, 8, 17, 30, 0) 
+    start_date = start_date.strftime("%y-%m-%d %H:%M")
+    end_date = end_date.strftime("%y-%m-%d %H:%M")
+    tag = "work"
+    num_sessions = 5
+
     cur.execute(query, (start_date, end_date, tag, num_sessions))
 
     cur.execute('SELECT * FROM study_sessions')
