@@ -1,9 +1,12 @@
 
+
 const timerDisplay = document.querySelector('.timer-display');
 const title = document.querySelector('.title')
 const tagSelect = document.getElementById('tags');
 const startButton = document.querySelector('.start-button');
 const durationInput = document.getElementById('duration');
+
+
 
 let timeLeft = 5; // 50 minutes in seconds
 let countdown;
@@ -79,7 +82,6 @@ function startPyTimer(){
 }
 
 function send_session(){
-  const axios = require('axios');
   console.log('sending session')
   axios.post('/api/add_session',{data})
   .then(response => {
