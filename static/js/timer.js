@@ -1,4 +1,3 @@
-const axios = require('axios');
 
 const timerDisplay = document.querySelector('.timer-display');
 const title = document.querySelector('.title')
@@ -80,6 +79,7 @@ function startPyTimer(){
 }
 
 function send_session(){
+  const axios = require('axios');
   console.log('sending session')
   axios.post('/api/add_session',{data})
   .then(response => {
