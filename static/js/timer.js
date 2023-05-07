@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 const timerDisplay = document.querySelector('.timer-display');
 const title = document.querySelector('.title')
 const tagSelect = document.getElementById('tags');
@@ -14,6 +16,11 @@ let totalPomo = durationInput.value
 let currentBreak = 0
 let totalBreak = 0
 
+/*
+Number of Sessions = durationInput.value
+tag = tagSelect.value
+start and end time, record time at beginning and at
+*/
 
 
 function startTimer() {
@@ -42,6 +49,7 @@ function timerComplete() {
   if (currentPomo == durationInput.value){
     title.textContent = "DONE!!!"
     // record to database()
+    send_session()
     return
   }
   if (onBreak){
@@ -70,3 +78,35 @@ function startPyTimer(){
         console.log(response);
       });
 }
+
+function send_session(){
+  console.log('sending session')
+  axios.post('/api/add_session',{data})
+  .then(response => {
+    console.log(response.data.result);
+  })
+}
+
+const postData = async (url = '', data = {}) => {
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  });
+  return response.json();
+}
+
+const data = {
+  time_start: new Date(),
+  time_end: new Date(),
+  tag: "math",
+  pomodoro_count: 2
+};
+
+postData('/api/add_session', {data})
+  .then(data => {
+    console.log(data.result);
+    // do something with the result
+  });
