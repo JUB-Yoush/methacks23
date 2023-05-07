@@ -20,6 +20,10 @@
                 </tr>
             </thead>
             <tbody>
+                {% for key in stats %}
+                <p1> {{ stats[key] }}</p1>
+                <br>   
+                {% endfor %}
                 {% for row in data %}
                 <tr>
                     <td>{{ row[0] }}</td>
