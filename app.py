@@ -3,10 +3,10 @@ import no_gui_pomo
 import sqlite3
 import datetime
 
-import serial
-import time
+#import serial
+#import time
 
-ser = serial.Serial('/dev/cu.usbmodem14501',9600)
+#ser = serial.Serial('/dev/cu.usbmodem14501',9600)
 
 # Create the Flask application object
 app = Flask(__name__)
@@ -23,8 +23,8 @@ def timer():
 @app.route('/start_timer', methods=['POST'])
 def start_timer():
     print('hahahah')
-    ser.write(b'p')  # Send the command to start the timer
-    ser.write(b's')  # Send the command to stop the timer
+    #ser.write(b'p')  # Send the command to start the timer
+    #ser.write(b's')  # Send the command to stop the timer
     pomodoro.start_timer()
     
 @app.route('/')
